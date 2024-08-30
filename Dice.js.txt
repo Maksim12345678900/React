@@ -1,0 +1,25 @@
+import React, { useState } from 'react';
+import './Dice.css';
+
+const diceImages = [
+  'dice1.png', 'dice2.png', 'dice3.png',
+  'dice4.png', 'dice5.png', 'dice6.png'
+];
+
+const Dice = () => {
+  const [currentDice, setCurrentDice] = useState(0);
+
+  const rollDice = () => {
+    const newRoll = Math.floor(Math.random() * 6);
+    setCurrentDice(newRoll);
+  };
+
+  return (
+    <div className="dice-container">
+      <img src={`/images/${diceImages[currentDice]}`} alt={`Dice showing ${currentDice + 1}`} className="dice-image" />
+      <button className="roll-button" onClick={rollDice}>Бросить кубик</button>
+    </div>
+  );
+};
+
+export default Dice;
